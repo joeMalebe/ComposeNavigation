@@ -1,4 +1,4 @@
-package com.example.comosenavigation
+package com.example.spiritsnack
 
 import org.junit.Test
 
