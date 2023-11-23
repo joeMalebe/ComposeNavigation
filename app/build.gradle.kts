@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
+    kotlin("plugin.serialization") version Versions.kotlinVersion
 }
 
 android {
@@ -42,7 +43,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = Versions.composeCompilerVersion
     }
     packaging {
         resources {
@@ -70,6 +71,19 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation("com.google.dagger:hilt-android:${Versions.hiltVersion}")
     kapt("com.google.dagger:hilt-android-compiler:${Versions.hiltVersion}")
+
+    //retrofit
+    implementation("com.squareup.retrofit2:retrofit:${(Versions.retrofitVersion)}")
+    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:${(Versions.kotlinSerialisationConverterVersion)}")
+    implementation("com.squareup.retrofit2:retrofit-mock:${(Versions.retrofitVersion)}")
+    implementation("com.github.skydoves:retrofit-adapters-result:${(Versions.skydovesVersion)}")
+
+    //okhttp
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:${(Versions.okhttpVersion)}"))
+    // define any required OkHttp artifacts without version
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
+
 }
 
 // Allow references to generated code
