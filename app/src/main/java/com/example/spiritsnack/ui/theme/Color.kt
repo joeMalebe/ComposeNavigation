@@ -1,4 +1,4 @@
-package com.example.comosenavigation.ui.theme
+package com.example.spiritsnack.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

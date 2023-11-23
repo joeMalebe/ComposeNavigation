@@ -1,4 +1,4 @@
-package com.example.comosenavigation
+package com.example.spiritsnack
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.comosenavigation.ui.theme.ComoseNavigationTheme
+import com.example.spiritsnack.ui.theme.ComoseNavigationTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
