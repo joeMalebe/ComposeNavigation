@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -7,11 +9,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.comosenavigation"
+    namespace = "com.example.composenavigation"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.comosenavigation"
+        applicationId = "com.example.composenavigation"
         minSdk = 28
         targetSdk = 34
         versionCode = 1
@@ -24,12 +26,27 @@ android {
     }
 
     buildTypes {
+        val apiKey = gradleLocalProperties(rootDir).getProperty("apiKey")
+        val baseUrl = properties["apiHost"]
+
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "apiKey",  "\"$apiKey\"")
+            buildConfigField("String", "baseUrl", "\"$baseUrl\"")
+        }
+
+        debug {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+            buildConfigField("String", "apiKey",  "\"$apiKey\"")
+            buildConfigField("String", "baseUrl", "\"$baseUrl\"")
         }
     }
     compileOptions {
@@ -42,6 +59,10 @@ android {
     buildFeatures {
         compose = true
     }
+    buildTypes {
+
+    }
+
     composeOptions {
         kotlinCompilerExtensionVersion = Versions.composeCompilerVersion
     }
